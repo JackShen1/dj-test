@@ -41,7 +41,7 @@
                                             <b>{{ status }}</b><br>
                                         </span>
 
-                                        <textarea id="responseArea" class="form-control response" style="color: #D14; border: none;" rows="6" readonly>{{ json_response }}</textarea>
+                                        <textarea id="responseArea" class="form-control response" style="color: #D14; border: none;" rows="{% if form %}10{% else %}15{% endif %}" readonly>{{ json_response }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form action="{% url 'post_request' %}" method="post">
+                            <form action="{% url 'api:post_request' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">First name</label>

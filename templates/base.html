@@ -23,8 +23,9 @@
         <div class="col-md-12">
             <h2 class="text-center mb-3">Test API</h2>
             <div class="form-group" style="text-align: center;">
-                <button class="btn btn-primary" onclick="window.open('{% url 'get_request' %}', '_self')">GET (Filter requests by IP)</button>
-                <button class="btn btn-primary" onclick="window.open('{% url 'post_request' %}', '_self')">POST (Validate Data)</button>
+                <button class="btn btn-primary" onclick="window.open('{% url 'api:get_request' %}', '_self')">GET (Filter requests by IP)</button>
+                <button class="btn btn-primary" onclick="window.open('{% url 'api:post_request' %}', '_self')">POST (Validate Data)</button>
+                <button class="btn btn-primary" onclick="window.open('{% url 'home' %}', '_self')">Go Home</button>
             </div>
             <hr class="mb-4">
 {% block content %}
