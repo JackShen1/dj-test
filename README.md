@@ -7,7 +7,7 @@
 
 **Main Task:** create a django application, with an endpoint (view) that accepts input parameters, validates them and returns the correct response.
 
-<h5 align="center">Input parameters</h5>
+<h4 align="center">Input parameters</h4>
 
 **`email`** parameter must be a valid email, length no more than 100 characters. It should be checked for all forbidden characters, combinations of characters, etc. Mail in the `gmail.com` and `icloud.com` domains should not be accepted.
 
@@ -100,11 +100,11 @@ Registration (Validation)        |  Successful Registration | Login (Validation)
 
 Successful Login        |  GET User Info (without token) | GET User Info (Success)     |  Change User Email
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-<img src="img/auth_login_success.png" title="Successful Login " width="100%"> |<img src="img/auth_user_info_403.png" title="GET User Info (without token)" width="100%">|<img src="img/auth_user_info_success.png" title="GET User Info (Success)" width="100%"> |<img src="img/auth_user_info_patch.png" title="Change User Email" width="100%">
+<img src="img/auth_login_success.png" title="Successful Login " width="100%"> |<img src="img/auth_user_info_403.png" title="GET User Info (without token)" width="100%">|<img src="img/auth_user_info_success.png" title="GET User Info (Success)" width="100%"> |<img src="img/auth_user_info_patchpng.png" title="Change User Email" width="100%">
 
 
 
-<h5 align="center">Main Logic</h5>
+<h4 align="center">Main Logic</h4>
 
 The key idea is to create our own User model instead of the Django model and write our own views to support returning JSON instead of HTML.
 
