@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-
+from django.core.validators import validate_email
 from api.utils import validate_password, validate_email_domain, validate_first_name, validate_last_name
 from .models import User
 
@@ -8,7 +8,7 @@ from .models import User
 class RegistrationSerializer(serializers.ModelSerializer):
     """Serializers registration requests and creates a new user."""
 
-    email = serializers.EmailField(max_length=100, validators=[validate_email_domain])
+    email = serializers.EmailField(max_length=100, validators=[validate_email, validate_email_domain])
     password = serializers.CharField(min_length=7, max_length=16, write_only=True, validators=[validate_password])
     first_name = serializers.CharField(max_length=100, validators=[validate_first_name])
     last_name = serializers.CharField(max_length=100, validators=[validate_last_name])
@@ -58,7 +58,7 @@ class LoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     """Handles serialization and deserialization of User objects."""
 
-    email = serializers.EmailField(max_length=100, validators=[validate_email_domain])
+    email = serializers.EmailField(max_length=100, validators=[validate_email, validate_email_domain])
     password = serializers.CharField(min_length=7, max_length=16, write_only=True, validators=[validate_password])
     first_name = serializers.EmailField(max_length=100, validators=[validate_first_name])
     last_name = serializers.EmailField(max_length=100, validators=[validate_last_name])
