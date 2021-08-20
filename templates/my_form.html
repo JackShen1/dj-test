@@ -18,6 +18,10 @@
     height: auto;
     font-family: "Consolas", sans-serif;
 }
+
+#responseArea {
+    background-color: #fff;
+}
 </style>
 {% endblock extrahead %}
 
@@ -30,24 +34,24 @@
                         </div>
 
                         <div class="card-body">
-                                <div class="row mb-1">
-                                    <div class="col-lg-12">
-                                        <div class="form-control response">
-                                            <span>
-                                                <b>{{ status }}</b><br>
-                                            </span>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <div class="form-control response">
+                                        <span>
+                                            <b>{{ status }}</b><br>
+                                        </span>
 
-                                            <textarea class="form-control response" style="color: #D14; border: none;" rows="6">{{ json_response }}</textarea>
-                                        </div>
+                                        <textarea id="responseArea" class="form-control response" style="color: #D14; border: none;" rows="6" readonly>{{ json_response }}</textarea>
                                     </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            {% if form %}
             <br><br>
-
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="card card-outline-secondary">
@@ -99,4 +103,5 @@
                     </div>
                 </div>
             </div>
+            {% endif%}
 {% endblock %}
