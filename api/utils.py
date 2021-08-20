@@ -7,6 +7,7 @@ from re import match
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
 from api.models import UserRequest
+from authentication.models import User
 
 
 def save_request(ip, params):
@@ -32,7 +33,7 @@ def validate_email_domain(email):
 
     if domain in BANNED_DOMAINS:
         raise ValidationError(_('You cannot use \'%(domain)s\' domain'), params={'domain': domain},)
-    elif UserRequest.objects.filter(email=email).exists():
+    elif UserRequest.objects.filter(email=email).exists() or User.objects.filter(email=email).exists():
         raise ValidationError(_('This mail is already in use'), code='invalid')
     else:
         try:
