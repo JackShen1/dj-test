@@ -4,7 +4,7 @@ from .models import UserRequest, UserIP
 from .forms import TestForm
 from .utils import save_request
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
+# from django.views.decorators.csrf import csrf_exempt
 
 
 def get_client_ip(request):
@@ -27,7 +27,7 @@ def get_requests(request):
     return render(request, 'my_form.html', content, status=200)
 
 
-@csrf_exempt
+# @csrf_exempt
 def post_requests(request):
     if request.method == 'POST':
         form = TestForm(request.POST)
