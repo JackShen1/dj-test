@@ -108,12 +108,10 @@ Successful Login        |  GET User Info (without token) | GET User Info (Succes
 
 The key idea is to create our own User model instead of the Django model and write our own views to support returning JSON instead of HTML.
 
-With token-based authentication, the server provides the client with a token after a successful login/register request.
+With token-based authentication, the server provides the client with a token after a successful login/register request. Token is generated as a simple object (dict) with two fields: `id` and `exp`, this object is encrypted using the server's `SECRET_KEY` and given to the client for further use.
 
-This token is unique to the user who is logged in and is stored in the database along with the user ID. The client is expected to send a token with future requests so that the server can identify the user.
-The server does this by searching the database table that contains all the created tokens.
+The client is expected to send a token with future requests (instead of session cookies), so that the server can identify the user. We take the token from the http request, then decode the user_id from it and check if there is such a user_id in the database, and if there is such a user and is active, then the request is authorized.
 
-If a matching token is found, the server continues to verify that the token is still valid. If the corresponding token is not found, we say that the user is not authenticated.
 
 ### 💡 &nbsp;Additional Info
 
